@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class DadosPessoais(models.Model):
     nome = models.CharField("Nome", max_length=50)
     rg = models.CharField("RG", max_length=50)
@@ -11,6 +10,21 @@ class DadosPessoais(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+class DadosDaEmpresa(models.Model):
+    razao_social          = models.CharField("Razão ", max_length=50, blank=True, null=True)
+    nome_fantasia         = models.CharField("Nome Fantasia", max_length=50, blank=True, null=True)
+    cnpj                  = models.CharField("CNPJ", max_length=36, unique=True, blank=True, null=True)
+    fundacao              = models.DateField("Fundação",max_length=8, blank=True, null=True)      
+    inscricao_estadual    = models.CharField("Inscrição Estadual",blank=True, null=True, max_length=50)
+    inscricao_municipal   = models.CharField("Inscrição Municipal", blank=True, null=True,max_length=50)
+
+    class Meta:
+        verbose_name_plural = 'Razão Social'
+
+    def __str__(self):
+        return self.razao_social
 
 
 class Endereco(models.Model):
