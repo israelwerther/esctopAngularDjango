@@ -53,8 +53,8 @@ class Contato(models.Model):
 
 class Referencia(models.Model):
     nome = models.CharField("Nome", max_length=50)
-    contatos = models.ManyToManyField(Contato)
     endereco = models.CharField("Parentesco", max_length=50, blank=True)
+    contatos = models.ManyToManyField(Contato)
 
     class Meta:
         verbose_name = 'Referência'
@@ -70,5 +70,11 @@ class DadosBancarios(models.Model):
     agencia               = models.CharField("Nº agência",max_length=15, blank=True)
     conta                 = models.CharField("Nº conta",max_length=15, blank=True)
     
+    class Meta:
+        verbose_name = 'Dado Bancário'
+        verbose_name_plural = 'Dados Bancários'
+
+    def __str__(self):
+        return self.tipo_de_conta
 
     
