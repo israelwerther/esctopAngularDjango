@@ -1,7 +1,7 @@
 from banco.models import Banco
 from core.models import Contato, DadosBancarios, DadosDaEmpresa, Endereco, Referencia, DadosPessoais
 from rest_framework import serializers
-from esctop.models import ClienteEsctop
+from esctop.models import ClienteEsctop, Representante
 
 
 class DadosDaEmpresaSerializer(serializers.ModelSerializer):
@@ -40,9 +40,9 @@ class ReferenciaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class DadosPessoaisSerializer(serializers.ModelSerializer):    
+class RepresentanteSerializer(serializers.ModelSerializer):    
     class Meta:
-        model = DadosPessoais
+        model = Representante
         fields = '__all__'
 
 
@@ -53,7 +53,7 @@ class ClienteEsctopSerializer(serializers.ModelSerializer):
     banco = BancoSerializer()
     dados_bancarios = DadosBancariosSerializer()
     referencia = ReferenciaSerializer()
-    representante = DadosPessoaisSerializer(many=True)
+    representante = RepresentanteSerializer(many=True)
 
     class Meta:
         model = ClienteEsctop
