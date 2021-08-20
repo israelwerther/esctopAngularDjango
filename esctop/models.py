@@ -4,15 +4,13 @@ from django.db import models
 
 
 class Representante(models.Model):
-    dados_pessoais = models.ManyToManyField(DadosPessoais, verbose_name=("Representante"))
+    dados_pessoais = models.ForeignKey(DadosPessoais, verbose_name=("Representante"), on_delete=models.CASCADE)
     endereco = models.ManyToManyField(Endereco, verbose_name=("Endereço"))
     contatos = models.ManyToManyField(Contato, verbose_name=("Contatos"))
 
     class Meta:
-        verbose_name = 'Representante'        
+        verbose_name = 'Representante' 
 
-    def __str__(self):
-        return self.dados_pessoais.nome
 
 class ClienteEsctop(models.Model):
     dados_da_empresa = models.ForeignKey(DadosDaEmpresa, verbose_name=("Dados da empresa"), on_delete=models.CASCADE)

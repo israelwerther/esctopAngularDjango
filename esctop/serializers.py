@@ -40,7 +40,9 @@ class ReferenciaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RepresentanteSerializer(serializers.ModelSerializer):    
+class RepresentanteSerializer(serializers.ModelSerializer):
+    endereco = EnderecoSerializer(many=True)
+    contatos = ContatoSerializer(many=True)
     class Meta:
         model = Representante
         fields = '__all__'
