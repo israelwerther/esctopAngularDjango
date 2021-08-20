@@ -1,21 +1,16 @@
-from core.models import Contato, DadosPessoais, Endereco, Referencia, DadosDaEmpresa
+from banco.models import Banco
+from core.models import Contato, DadosPessoais, Endereco, Referencia, DadosDaEmpresa, DadosBancarios
 from django.db import models
-
-
-class Empresa(models.Model):
-    dados_da_empresa = models.ForeignKey(DadosDaEmpresa, verbose_name=("Dados da empresa"), on_delete=models.CASCADE)
-
-
-class Representante(models.Model):
-    dados_pessoais = models.ForeignKey(DadosPessoais, verbose_name=("Representante"), on_delete=models.CASCADE)    
 
 
 class ClienteEsctop(models.Model):
     dados_da_empresa = models.ForeignKey(DadosDaEmpresa, verbose_name=("Dados da empresa"), on_delete=models.CASCADE)
-    representante = models.ForeignKey(DadosPessoais, verbose_name=("Representante"), on_delete=models.CASCADE)
     enderecos = models.ManyToManyField(Endereco, verbose_name=("Endereços"))
     contatos = models.ManyToManyField(Contato, verbose_name=("Contatos"))
+    banco = models.ForeignKey(Banco, verbose_name=("Banco"), on_delete=models.CASCADE)
+    dados_bancarios = models.ForeignKey(DadosBancarios, verbose_name=("Dados Bancários"), on_delete=models.CASCADE)
     referencia = models.ForeignKey(Referencia, on_delete=models.CASCADE)
+    representante = models.ManyToManyField(DadosPessoais, verbose_name=("Representante"))
 
     class Meta:
         verbose_name = 'Cliente Esctop'

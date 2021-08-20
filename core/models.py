@@ -13,7 +13,7 @@ class DadosPessoais(models.Model):
 
 
 class DadosDaEmpresa(models.Model):
-    razao_social          = models.CharField("Razão ", max_length=50, blank=True, null=True)
+    razao_social          = models.CharField("Razão Social", max_length=50, blank=True, null=True)
     nome_fantasia         = models.CharField("Nome Fantasia", max_length=50, blank=True, null=True)
     cnpj                  = models.CharField("CNPJ", max_length=36, unique=True, blank=True, null=True)
     fundacao              = models.DateField("Fundação",max_length=8, blank=True, null=True)      
@@ -21,7 +21,8 @@ class DadosDaEmpresa(models.Model):
     inscricao_municipal   = models.CharField("Inscrição Municipal", blank=True, null=True,max_length=50)
 
     class Meta:
-        verbose_name_plural = 'Razão Social'
+        verbose_name_plural = 'Dados da Empresa '
+        # verbose_name_plural = 'Dados das Empresas'
 
     def __str__(self):
         return self.razao_social

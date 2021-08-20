@@ -22,9 +22,7 @@ class ContatoSerializer(serializers.ModelSerializer):
         fields = '__all__'        
 
 
-class ReferenciaSerializer(serializers.ModelSerializer):
-    # contatos = ContatoSerializer(many=True)
-    # enderecos = EnderecoSerializer(many=True)
+class ReferenciaSerializer(serializers.ModelSerializer):    
     class Meta:
         model = Referencia
         fields = '__all__'
