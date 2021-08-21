@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Representante(models.Model):
-    dados_pessoais = models.ForeignKey(DadosPessoais, verbose_name=("Representante"), on_delete=models.CASCADE)
+    dados_pessoais = models.ForeignKey(DadosPessoais, on_delete=models.CASCADE)
     endereco = models.ManyToManyField(Endereco, verbose_name=("Endereço"))
     contatos = models.ManyToManyField(Contato, verbose_name=("Contatos"))
 

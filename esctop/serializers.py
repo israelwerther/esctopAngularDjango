@@ -40,7 +40,14 @@ class ReferenciaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class DadosPessoaisSerializer(serializers.ModelSerializer):    
+    class Meta:
+        model = DadosPessoais
+        fields = '__all__'
+
+
 class RepresentanteSerializer(serializers.ModelSerializer):
+    dados_pessoais = DadosPessoaisSerializer()
     endereco = EnderecoSerializer(many=True)
     contatos = ContatoSerializer(many=True)
     class Meta:
