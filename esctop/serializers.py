@@ -10,6 +10,12 @@ class DadosDaEmpresaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class FiadorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DadosPessoais
+        fields = '__all__'
+
+
 class EnderecoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Endereco
@@ -57,6 +63,7 @@ class RepresentanteSerializer(serializers.ModelSerializer):
 
 class ClienteEsctopSerializer(serializers.ModelSerializer):   
     dados_da_empresa = DadosDaEmpresaSerializer()
+    fiador = FiadorSerializer()
     contatos = ContatoSerializer(many=True)
     enderecos = EnderecoSerializer(many=True)
     banco = BancoSerializer()
@@ -66,4 +73,4 @@ class ClienteEsctopSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClienteEsctop
-        fields = ['id', 'dados_da_empresa', 'enderecos', 'contatos', 'banco', 'dados_bancarios', 'referencia', 'representante']
+        fields = ['id', 'dados_da_empresa', 'fiador', 'enderecos', 'contatos', 'banco', 'dados_bancarios', 'referencia', 'representante']
