@@ -4,6 +4,12 @@ from rest_framework import serializers
 from esctop.models import ClienteEsctop, Representante
 
 
+class DadosPessoaisSerializer(serializers.ModelSerializer):    
+    class Meta:
+        model = DadosPessoais
+        fields = '__all__'
+
+
 class DadosDaEmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model = DadosDaEmpresa
@@ -46,12 +52,6 @@ class ReferenciaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class DadosPessoaisSerializer(serializers.ModelSerializer):    
-    class Meta:
-        model = DadosPessoais
-        fields = '__all__'
-
-
 class RepresentanteSerializer(serializers.ModelSerializer):
     dados_pessoais = DadosPessoaisSerializer()
     endereco = EnderecoSerializer(many=True)
@@ -73,4 +73,14 @@ class ClienteEsctopSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClienteEsctop
-        fields = ['id', 'dados_da_empresa', 'fiador', 'enderecos', 'contatos', 'banco', 'dados_bancarios', 'referencia', 'representante']
+        fields = [
+            'id', 
+            'dados_da_empresa', 
+            'fiador', 
+            'enderecos', 
+            'contatos', 
+            'banco', 
+            'dados_bancarios', 
+            'referencia', 
+            'representante'
+        ]
