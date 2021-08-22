@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'banco',
     'credcoop',
     'esctop',
+    'emprestimo',
     'core',
     'corsheaders',
     
