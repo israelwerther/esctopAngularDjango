@@ -54,8 +54,8 @@ class Contato(models.Model):
 
 class Referencia(models.Model):
     nome = models.CharField("Nome", max_length=50)
-    endereco = models.CharField("Parentesco", max_length=50, blank=True)
     contatos = models.ManyToManyField(Contato)
+    parentesco = models.CharField("Parentesco", max_length=50, blank=True)
 
     class Meta:
         verbose_name = 'Referência'

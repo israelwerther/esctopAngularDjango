@@ -1,6 +1,7 @@
 from banco.models import Banco
 from core.models import Contato, DadosPessoais, Endereco, Referencia, DadosDaEmpresa, DadosBancarios
 from django.db import models
+from emprestimo.models import Emprestimo
 
 
 # Poderia ser melhor criar o representante dentro do model clienteesctop?
@@ -25,6 +26,7 @@ class ClienteEsctop(models.Model):
     dados_bancarios = models.ForeignKey(DadosBancarios, verbose_name=("Dados Bancários"), on_delete=models.CASCADE)
     referencia = models.ForeignKey(Referencia, on_delete=models.CASCADE)
     representante = models.ManyToManyField(Representante, verbose_name=("Representante"))
+    emprestimo = models.ForeignKey(Emprestimo, verbose_name=("Emprestimos"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Cliente Esctop'

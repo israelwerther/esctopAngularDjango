@@ -5,7 +5,7 @@ from django.db import models
 class Emprestimo(models.Model):
     funcionario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     valor_do_emprestimo = models.CharField("Valor do Empréstimo", max_length=50)
-    qtd_de_parcelas = models.CharField("Valor do Empréstimo", max_length=50)
+    parcelas = models.CharField("Parcelas", max_length=50)
     
     class Meta:
         verbose_name = 'Empréstimo'
