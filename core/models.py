@@ -21,8 +21,8 @@ class DadosDaEmpresa(models.Model):
     inscricao_municipal   = models.CharField("Inscrição Municipal", blank=True, null=True,max_length=50)
 
     class Meta:
-        verbose_name_plural = 'Dados da Empresa '
-        # verbose_name_plural = 'Dados das Empresas'
+        verbose_name = 'Dados da Empresa '
+        verbose_name_plural = 'Dados das Empresas'
 
     def __str__(self):
         return self.razao_social
