@@ -1,10 +1,10 @@
 from banco.models import Banco
 from core.models import Contato, DadosBancarios, DadosDaEmpresa, Endereco, Referencia, DadosPessoais
 from rest_framework import serializers
-from esctop.models import ClienteEsctop, Representante
+from esctop.models import ClienteEsctop, FiadorEsctop, Representante
 
 
-class DadosPessoaisSerializer(serializers.ModelSerializer):    
+class DadosPessoaisSerializer(serializers.ModelSerializer):
     class Meta:
         model = DadosPessoais
         fields = '__all__'
@@ -13,12 +13,6 @@ class DadosPessoaisSerializer(serializers.ModelSerializer):
 class DadosDaEmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model = DadosDaEmpresa
-        fields = '__all__'
-
-
-class FiadorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = DadosPessoais
         fields = '__all__'
 
 
@@ -31,7 +25,7 @@ class EnderecoSerializer(serializers.ModelSerializer):
 class ContatoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contato
-        fields = '__all__'        
+        fields = '__all__' 
 
 
 class BancoSerializer(serializers.ModelSerializer):
@@ -46,7 +40,7 @@ class DadosBancariosSerializer(serializers.ModelSerializer):
         fields = '__all__'       
 
 
-class ReferenciaSerializer(serializers.ModelSerializer):    
+class ReferenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Referencia
         fields = '__all__'
@@ -59,11 +53,23 @@ class RepresentanteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Representante
         fields = '__all__'
+        
+
+class FiadorEsctopSerializer(serializers.ModelSerializer):
+    dados_pessoais = DadosPessoaisSerializer()
+    contatos = ContatoSerializer(many=True)
+    enderecos = EnderecoSerializer(many=True)
+    banco = BancoSerializer()
+    dados_bancarios = DadosBancariosSerializer()
+    
+    class Meta:
+        model = FiadorEsctop
+        fields = '__all__'
 
 
 class ClienteEsctopSerializer(serializers.ModelSerializer):   
     dados_da_empresa = DadosDaEmpresaSerializer()
-    fiador = FiadorSerializer()
+    fiador_esctop = FiadorEsctopSerializer(many=True)
     contatos = ContatoSerializer(many=True)
     enderecos = EnderecoSerializer(many=True)
     banco = BancoSerializer()
@@ -76,7 +82,7 @@ class ClienteEsctopSerializer(serializers.ModelSerializer):
         fields = [
             'id', 
             'dados_da_empresa', 
-            'fiador', 
+            'fiador_esctop', 
             'enderecos', 
             'contatos', 
             'banco', 

@@ -1,7 +1,7 @@
-from .models import ClienteEsctop, Fiador, Representante
+from .models import ClienteEsctop, FiadorEsctop, Representante
 from django.contrib import admin
 
 admin.site.register(ClienteEsctop)
 admin.site.register(Representante)
-admin.site.register(Fiador)
+admin.site.register(FiadorEsctop)
 
