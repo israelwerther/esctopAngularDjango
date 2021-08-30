@@ -65,17 +65,26 @@ class Referencia(models.Model):
         return self.nome
 
 
-class DadosBancarios(models.Model):     
-    n_operacao            = models.CharField("Nº operação",max_length=15, blank=True)
-    tipo_de_conta         = models.CharField('Tipo de conta', max_length=25, blank=True)  
-    agencia               = models.CharField("Nº agência",max_length=15, blank=True)
-    conta                 = models.CharField("Nº conta",max_length=15, blank=True)
+class DadosBancarios(models.Model):   
+    CONTA_CORRENTE = "conta corrente"
+    CONTA_POUPANCA = "conta poupança"
+    CONTA_SALARIO = "conta salário"
+    TIPO_DE_CONTA_CHOICES = (
+        (CONTA_CORRENTE, "conta corrente"),
+        (CONTA_POUPANCA, "conta poupança"),
+        (CONTA_SALARIO, "conta salário"),      
+    )
+
+    n_operacao = models.CharField("Nº operação",max_length=15, blank=True)    
+    tipo_de_conta = models.CharField(max_length=25,choices=TIPO_DE_CONTA_CHOICES)
+    agencia = models.CharField("Nº agência",max_length=15, blank=True)
+    conta = models.CharField("Nº conta",max_length=15, blank=True)
     
     class Meta:
         verbose_name = 'Dado Bancário'
         verbose_name_plural = 'Dados Bancários'
 
     def __str__(self):
-        return self.tipo_de_conta
+        return self.conta
 
     

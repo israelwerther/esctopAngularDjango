@@ -6,7 +6,7 @@ class Emprestimo(models.Model):
     funcionario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     valor_do_emprestimo = models.CharField("Valor do Empréstimo", max_length=50)
     parcelas = models.CharField("Parcelas", max_length=50)
-    contrato = models.CharField("Contrato", max_length=50, null=True)
+    contrato = models.CharField("Contrato", max_length=50, null=True, unique=True)
     
     class Meta:
         verbose_name = 'Empréstimo'
