@@ -41,7 +41,7 @@ class ClienteEsctop(models.Model):
     dados_bancarios = models.ForeignKey(DadosBancarios, verbose_name=("Dados Bancários"), on_delete=models.CASCADE)
     referencia = models.ForeignKey(Referencia, on_delete=models.CASCADE)
     representante_esctop = models.ManyToManyField(RepresentanteEsctop, verbose_name=("Representante Esctop"))
-    emprestimo = models.ForeignKey(Emprestimo, verbose_name=("Emprestimos"), on_delete=models.CASCADE, blank=True, null=True)
+    emprestimos = models.ManyToManyField(Emprestimo, verbose_name=("Emprestimos"))
 
     class Meta:
         verbose_name = 'Cliente Esctop'
