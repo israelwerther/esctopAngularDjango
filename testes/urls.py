@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/credcoop/', include('credcoop.urls')),
-    path('api/esctop/', include('esctop.urls'))
+    path('api/esctop/', include('esctop.urls')),
 ]

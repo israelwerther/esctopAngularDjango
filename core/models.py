@@ -12,13 +12,17 @@ class DadosPessoais(models.Model):
         return self.nome
 
 
+class LocalDeTrabalho(models.Model):
+    nomeFantasia = models.CharField("NomeFantasia", max_length=50)
+
+
 class DadosDaEmpresa(models.Model):
-    razao_social          = models.CharField("Razão Social", max_length=50, blank=True, null=True)
-    nome_fantasia         = models.CharField("Nome Fantasia", max_length=50, blank=True, null=True)
-    cnpj                  = models.CharField("CNPJ", max_length=36, unique=True, blank=True, null=True)
-    fundacao              = models.DateField("Fundação",max_length=8, blank=True, null=True)      
-    inscricao_estadual    = models.CharField("Inscrição Estadual",blank=True, null=True, max_length=50)
-    inscricao_municipal   = models.CharField("Inscrição Municipal", blank=True, null=True,max_length=50)
+    razao_social = models.CharField("Razão Social", max_length=50, blank=True, null=True)
+    nome_fantasia = models.CharField("Nome Fantasia", max_length=50, blank=True, null=True)
+    cnpj = models.CharField("CNPJ", max_length=36, unique=True, blank=True, null=True)
+    fundacao = models.DateField("Fundação",max_length=8, blank=True, null=True)      
+    inscricao_estadual = models.CharField("Inscrição Estadual",blank=True, null=True, max_length=50)
+    inscricao_municipal = models.CharField("Inscrição Municipal", blank=True, null=True,max_length=50)
 
     class Meta:
         verbose_name = 'Dados da Empresa '
